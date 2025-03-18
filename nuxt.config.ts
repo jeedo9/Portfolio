@@ -8,6 +8,9 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/google-fonts',
   ],
+  image: {
+    quality: 80
+  },
   vite: {
     plugins: [
       tailwindcss(),
@@ -20,4 +23,8 @@ export default defineNuxtConfig({
   css: ['@/assets/css/main.css'],
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
+  ssr: false,
+  // routeRules: {
+  //   '/**': {prerender: true}
+  // }
 })
