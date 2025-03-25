@@ -5,7 +5,6 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/image',
     '@nuxt/icon',
-    '@pinia/nuxt',
     '@nuxtjs/google-fonts',
   ],
   image: {

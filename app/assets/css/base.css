@@ -98,11 +98,11 @@
         @apply bg-accent/20 text-foreground/65
     }
 
-    button, input::placeholder {
+    button, img /*, input::placeholder */ {
         user-select: none;
     }
     button {
-        @apply select-none cursor-pointer disabled:opacity-45 disabled:cursor-not-allowed
+        @apply cursor-pointer disabled:opacity-45 disabled:cursor-not-allowed
     }
 
 
