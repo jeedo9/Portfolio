@@ -1,0 +1,24 @@
+
+    @utility container {
+        margin-inline: auto;
+        padding-inline: 1.5rem;
+    }
+
+
+
+@utility bg-conic {
+    background-image: linear-gradient(var(--color-accent), transparent);
+}
+
+
+@utility bg-gradient-1 {
+    @apply  bg-gradient-to-r from-foreground from-15% via-muted to-foreground bg-clip-text text-transparent
+}
+
+@utility bg-gradient-2 {
+    @apply  bg-gradient-to-r from-muted to-foreground bg-clip-text text-transparent 
+}
+
+@utility text-shadow {
+    @apply  drop-shadow-sm dark:drop-shadow-[0_1px_2px_var(--color-muted)]
+}

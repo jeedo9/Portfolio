@@ -1,0 +1,66 @@
+@keyframes slide-down-right {
+    from {
+        transform: translate(25%, -30%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-30%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(.35);
+    }
+    20% {
+        transform: scale(1.05);
+    }
+    40% {
+        transform: scale(.9);
+    }
+    70%, 100% {
+       transform: scale(1);
+    }
+
+
+}
+
+@keyframes slide-left {
+    from {
+        transform: translateX(-20%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-down-left {
+    from {
+        transform: translate(-25%, -30%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(50%);
+    }
+    to {
+        opacity: 1;
+        translate: 0;
+    }
+}

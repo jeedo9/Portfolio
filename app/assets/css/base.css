@@ -1,0 +1,146 @@
+@layer base {
+
+    :root {
+        --header-height: 74px;
+        --footer-height: 55px;
+        --viewport: 100vh;
+        --container-height: calc(var(--viewport) - (var(--header-height) + var(--footer-height)));
+        --section-height: calc(var(--viewport) - var(--header-height));
+        --animation-delay: 600ms;
+        --duration-large: 550ms;
+        --duration-x-large: 700ms;
+    }
+
+    @media only screen and (width <= 640px) {
+        :root {
+            --footer-height: 73px;
+        }
+    }
+
+    .dark {
+        --color-foreground:   var(--color-slate-200);
+        --color-background:   var(--color-slate-800);
+        --color-muted:   var(--color-slate-400);
+        --color-border:  var(--color-slate-300);
+
+    }
+    
+    @theme {
+        --font-lato: 'Lato', 'Poppins',system-ui, sans-serif;
+        --font-poppins: 'Poppins','Lato', sytem-ui, sans-serif;
+        --font-agustina: 'agustina', 'Poppins', 'Roboto', sans-serif;
+        --color-background: var(--color-slate-50);
+        --color-foreground:  var(--color-slate-600);
+        --color-accent: var(--color-sky-400);
+        --color-muted:   var(--color-slate-300);
+        --color-border:  var(--color-slate-400);
+        --animate-spin: spin 5s ease-in-out infinite;
+        --default-transition-duration: 300ms;
+        --animate-slide-down-right: slide-down-right .6s ease-in-out forwards;
+        --animate-slide-down: slide-down .6s ease-in-out forwards;
+        --animate-pop: pop 1.8s cubic-bezier( 0.25, 0.46, 0.45, 0.94 ) forwards;
+        --animate-slide-left: slide-left .5s ease-out forwards;
+        --animate-slide-down-left: slide-down-left .6s ease-in-out forwards;
+        --animate-slide-up: slide-up .6s ease-in-out forwards;
+
+   
+    
+
+      
+    }
+
+
+ 
+    section {
+        min-height: var(--section-height);
+        overflow-x: hidden;
+    }
+
+
+    
+    @font-face {
+        font-family: 'agustina';
+        src: url('/fonts/Agustina.otf') format('opentype');
+        font-display: swap;
+    }
+
+    html {
+        font-family: var(--font-poppins);
+        font-synthesis: style;
+        text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overscroll-behavior-y: none;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-muted) transparent;
+        scroll-padding-top: calc(var(--header-height) + .15rem);
+
+        @media (prefers-reduced-motion: no-preference) {
+
+            scroll-behavior: smooth;
+        }
+    }
+
+    body {
+        -webkit-tap-highlight-color: transparent;
+        @apply bg-background text-foreground
+    }
+
+
+
+
+
+    
+    *::selection {
+        @apply bg-accent/20 text-foreground/65
+    }
+
+    button, input::placeholder {
+        user-select: none;
+    }
+    button {
+        @apply select-none cursor-pointer disabled:opacity-45 disabled:cursor-not-allowed
+    }
+
+
+    /* -- Typography -- */
+
+    .logo, h1 {
+
+       @apply text-accent font-agustina text-3xl
+
+    }
+
+    .title, h2, .sub-title, .h3 {
+        @apply font-lato 
+    }
+
+    .title, h2, .sub-title {
+        @apply tracking-tight capitalize
+    }
+
+    .title, h2 {
+        @apply font-bold text-[26px] sm:text-3xl text-foreground/82 
+    }
+
+    .sub-title {
+        @apply text-xl sm:text-2xl bg-gradient-2 text-shadow font-semibold 
+    }
+
+    .h3 {
+        @apply text-lg sm:text-xl tracking-wide
+    }
+
+
+      
+        
+    
+/*  accessibility :    
+    * {
+        @apply focus:outline-dashed outline-accent
+    } */
+
+}
