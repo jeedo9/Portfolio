@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/icon',
     '@nuxtjs/google-fonts',
+    '@nuxtjs/color-mode'
   ],
   image: {
     quality: 90
@@ -36,5 +37,17 @@ export default defineNuxtConfig({
       Poppins: '400..600',
     },
     display: 'fallback'
+  },
+  colorMode: {
+    preference: 'system', 
+    fallback: 'light', 
+    hid: 'nuxt-color-mode-script',
+    globalName: '__NUXT_COLOR_MODE__',
+    componentName: 'ColorScheme',
+    classPrefix: '',
+    classSuffix: '',
+    storage: 'localStorage',
+    dataValue: 'theme',
+    storageKey: 'theme'
   }
 }) 
