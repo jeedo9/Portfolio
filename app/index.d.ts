@@ -6,6 +6,10 @@
             github: string,
             linkedin: string,
             mail: string
+        },
+        school: {
+          name: string,
+          link: string
         }
       },
       animation: {

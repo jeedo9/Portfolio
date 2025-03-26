@@ -1,33 +1,34 @@
 import type { TLink } from "~/types"
+import { GITHUB, LINKEDIN, MAIL } from "~/utils/constants"
 export  const footerLinks: TLink[] = [
     {
-      to: 'https://github.com/jeeddo',
+      to: GITHUB,
       target: '_blank',
       icon: {
         name: 'mynaui:brand-github',
         slug: 'github'
       },
-      className: 'cursor-pointer transition-[color] '
+      className: ' transition-[color] '
   
     },
     {
-      to: 'www.linkedin.com/in/pierre-matar-38b7832a0',
+      to: LINKEDIN,
       target: '_blank',
       icon: {
         name: 'mynaui:brand-linkedin',
         slug: 'linkedin'
       },
-      className: 'cursor-pointer  transition-[color] '
+      className: ' transition-[color] '
   
     },
     {
-      to: 'mailto:pierrematar1912@gmail.com',
+      to: MAIL,
       target: '_blank',
       icon: {
         name: 'mynaui:envelope',
         slug: 'mail'
       },
-      className: 'cursor-pointer transition-[color] '
+      className: ' transition-[color] '
     }
   ]
   

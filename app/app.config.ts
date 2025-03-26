@@ -3,8 +3,12 @@ export default defineAppConfig({
         name: 'Pierre',
         socials: {
             github: 'https://github.com/jeeddo',
-            mail: `pierrematar1912@gmail.com`,
+            mail: `mailto:pierrematar1912@gmail.com`,
             linkedin: 'www.linkedin.com/in/pierre-matar-38b7832a0',
+        },
+        school: {
+            link: 'https://www.esiee.fr/',
+            name: 'ESIEE Paris'
         }
     },
     animation: {
