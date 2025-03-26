@@ -18,6 +18,13 @@ export interface AppHeaderProps extends ClassName {
 
 type Tuple2String = [string, string]
 
+
+export type ProvideHeader = {
+    showMenu: globalThis.Ref<boolean, boolean>,
+    closeMenu: () => void,
+    toggleMenu: () => void
+}
+
  const {navLinksMenu = _navLinksMenu, className = '', navLinks} =  defineProps<AppHeaderProps>()
 
  const delayNavLinks = Array.of(getAnimationDelay((navLinks?.length ? navLinks.length + 1 : undefined) || _navLinks.length + 1), getAnimationDelay((navLinks?.length ? navLinks.length + 2 : undefined) || _navLinks.length + 2)) as Tuple2String
@@ -26,6 +33,14 @@ type Tuple2String = [string, string]
  getAnimationDelay((navLinksMenu?.length ? navLinksMenu.length + 2 : undefined) || _navLinksMenu.length + 2)) as Tuple2String;
 
  const showShadow = ref(false);
+
+ const showMenu = ref(false)
+
+ const closeMenu = () => {showMenu.value = false}
+
+ const toggleMenu = () => {showMenu.value = !showMenu.value}
+
+ provide('menu', {showMenu, closeMenu, toggleMenu})
 
  onMounted(() => {
 
@@ -36,12 +51,8 @@ type Tuple2String = [string, string]
     if (window.scrollY >= show || document.documentElement.scrollTop >= show) showShadow.value = true
     else showShadow.value = false
 
-
-
-
   }
   
-
   window.onscroll = handleShadow
  })
 
@@ -58,12 +69,12 @@ type Tuple2String = [string, string]
         <HeaderNavlinksNavLinks :nav-links="navLinks || _navLinks" />
         <HeaderResumeAndThemeButtons :delay="delayNavLinks" :animation="resumeThemeBtnAnimation || 'animate-slide-down-left opacity-0'" />
       </div>
-      <UiButtonsHamburger />
+      <UiButtonsHamburger  />
 
       </div>
 
       
-      <HeaderMenu :delay="delayNavLinksMenu"   :animation="resumeThemeBtnAnimationMenu || 'animate-slide-down opacity-0'" :nav-links="navLinksMenu || _navLinksMenu"  />
+      <HeaderMenu  v-if="showMenu" :delay="delayNavLinksMenu"   :animation="resumeThemeBtnAnimationMenu || 'animate-slide-down opacity-0'" :nav-links="navLinksMenu || _navLinksMenu"  />
 
 
 

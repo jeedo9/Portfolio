@@ -8,7 +8,28 @@ export interface NavLinksProps {
   listClass?: string    
 
 }
-const {listClass = ''} = defineProps<NavLinksProps>()
+const {listClass = '', navLinks} = defineProps<NavLinksProps>()
+
+const navLinkss = ref<TNavLink[]>(navLinks)
+
+
+const handleClick = (navLinkId: string) => {
+
+
+  navLinkss.value.forEach(link => {
+
+    if (link.isPressed) link.isPressed = false
+  })
+
+  const navLinkIndex = navLinkss.value.findIndex(link => link.to === navLinkId )
+
+  if (navLinkIndex !== -1) {
+    const navLink = navLinkss.value[navLinkIndex]
+
+   if ( navLink?.isPressed !== undefined) navLink.isPressed = true;
+  }
+
+}
 
    </script>
 
@@ -16,10 +37,10 @@ const {listClass = ''} = defineProps<NavLinksProps>()
         <nav>
           <ul :class="twMerge('justify-center items-center gap-x-10 flex', listClass)">
 
-            <li v-for="navLink in navLinks" :key="navLink.to" class="flex">
+            <li v-for="navLink in navLinkss" :key="navLink.to" class="flex">
 
 
-              <HeaderNavlinksNavLink v-bind="navLink"  />
+              <HeaderNavlinksNavLink @click="handleClick(navLink.to)" v-bind="navLink"  />
             </li>
             
           </ul>

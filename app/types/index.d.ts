@@ -6,7 +6,8 @@ type Link = {
         slug: string
     },
     text?: string,
-} & ClassName
+    className?: string | (() => string)
+}
 
 type ClassName = {
     className?: string
