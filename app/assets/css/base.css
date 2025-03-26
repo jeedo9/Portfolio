@@ -86,7 +86,7 @@
 
     body {
         -webkit-tap-highlight-color: transparent;
-        @apply bg-background text-foreground
+        @apply bg-background text-foreground transition-colors duration-(--duration-x-large)
     }
 
 
@@ -102,7 +102,13 @@
         user-select: none;
     }
     button {
-        @apply cursor-pointer disabled:opacity-45 disabled:cursor-not-allowed
+        @apply disabled:opacity-45 disabled:cursor-not-allowed
+    }
+    button, a {
+        cursor: pointer;
+    }
+    a:hover {
+        @apply text-accent
     }
 
 
@@ -119,7 +125,11 @@
     }
 
     .title, h2, .sub-title {
-        @apply tracking-tight capitalize
+        @apply tracking-tight
+    }
+
+    .title, h2, .sub-title, h1, .logo {
+        @apply capitalize
     }
 
     .title, h2 {
