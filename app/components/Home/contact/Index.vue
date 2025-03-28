@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import type { ClassName } from '~/types';
 import type { SectionContact } from './dataContact';
 import { twMerge } from 'tailwind-merge';
 
  
 
 
-type ContactProps = ClassName & SectionContact
-const {className = ''} = defineProps<ContactProps>()
+type ContactProps = SectionContact
+ defineProps<ContactProps>()
 
 </script>
 
 <template>
-          <section id="contact" :class="twMerge('flex justify-center items-center flex-col gap-y-10', className)" style="min-height: var(--container-height);" >
+          <section id="contact" :class="twMerge('flex justify-center items-center flex-col gap-y-10', $attrs.class as string)" style="min-height: var(--container-height);" >
         <div class="flex flex-col justify-center items-center gap-y-4">
           <h3 class="sub-title">{{ subtitle }}</h3>
           <h2 id="get-touch" >{{ title }}</h2>
@@ -23,7 +22,7 @@ const {className = ''} = defineProps<ContactProps>()
 
 
       
-        <UiButtonsButtonAnimationTwo class-name="shadow-sm shadow-accent/50" >Let's connect</UiButtonsButtonAnimationTwo>
+        <UiButtonsButtonAnimationTwo class="shadow-sm shadow-accent/50" >Let's connect</UiButtonsButtonAnimationTwo>
        
       </section>
 </template>

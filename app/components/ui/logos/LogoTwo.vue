@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import { twMerge } from 'tailwind-merge';
-import type {ClassName, HeadingTags} from '../../../types'
+import type {HeadingTags} from '../../../types'
 
-    interface LogoTwoProps extends ClassName {
+    interface LogoTwoProps  {
 
         name?: string,
         as?: HeadingTags
 
     }
 
-    const {className = '', as = 'h4', name = AUTHOR_NAME} = defineProps<LogoTwoProps>()
+    const { as = 'h4', name = AUTHOR_NAME} = defineProps<LogoTwoProps>()
 
 
 </script>
 <template>
     
-    <as :class="twMerge('logo', className)">
+    <as :class="twMerge('logo', $attrs.class as string)">
         {{ name }}
     </as>
 

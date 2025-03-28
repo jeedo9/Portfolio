@@ -1,20 +1,18 @@
 <script setup lang="ts">
-
-import type { ClassName } from '~/types';
 import FullStack from '../../../assets/lotties/FullStack.json'
 import type { SectionSkills } from './dataSkills';
 import { twMerge } from 'tailwind-merge';
 import { Vue3Lottie } from 'vue3-lottie';
 
 
-type SkillsProps = ClassName & SectionSkills
-const {className = ''} = defineProps<SkillsProps>()
+type SkillsProps = SectionSkills
+defineProps<SkillsProps>()
 
 
 </script>
 
 <template>
-         <section id="skills" :class="twMerge('flex justify-start items-center flex-col gap-y-34 md:gap-y-37 lg:gap-y-14', className)">
+         <section id="skills" :class="twMerge('flex justify-start items-center flex-col gap-y-34 md:gap-y-37 lg:gap-y-14', $attrs.class as string)">
         <div class="flex justify-center items-center gap-4 flex-col">
           <h2 aria-describedby="dev animation-prog tech" >{{ title }}</h2>
           <h3 id="dev" class="sub-title">{{ subtitle }}</h3>

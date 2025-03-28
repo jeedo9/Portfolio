@@ -9,10 +9,6 @@ type Link = {
     className?: string | (() => string)
 }
 
-type ClassName = {
-    className?: string
-}
-
 type Animation = `animate-${string}`
 
 type HeadingTags = Extract<keyof HTMLElementTagNameMap, `h${2 | 3 | 4 | 5 | 6}`>
@@ -20,4 +16,4 @@ type HeadingTags = Extract<keyof HTMLElementTagNameMap, `h${2 | 3 | 4 | 5 | 6}`>
 
 type TLink = (Link & Required<Pick<Link, 'icon'>>) | (Link & Required<Pick<Link, 'text'>>);
 
-export type {TLink, Link, Animation, HeadingTags, ClassName}
+export type {TLink, Link, Animation, HeadingTags}

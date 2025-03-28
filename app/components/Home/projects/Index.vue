@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import type { ClassName } from '~/types';
 import type { SectionProjects } from './dataProjects';
 import { twMerge } from 'tailwind-merge';
 
  
 
-type ProjectsProps = SectionProjects & ClassName
+type ProjectsProps = SectionProjects
 
-const {className = ''} = defineProps<ProjectsProps>()
+ defineProps<ProjectsProps>()
 
 const maxStack = ref<3 | 4>(4)
 
@@ -27,7 +26,7 @@ onMounted(() => {
 
 
 <template>
-          <section id="projects" :class="twMerge('flex flex-col justify-start items-center gap-y-14 overflow-x-visible', className)">
+          <section id="projects" :class="twMerge('flex flex-col justify-start items-center gap-y-14 overflow-x-visible', $attrs.class as string)">
         <div class="flex flex-col justify-center items-center gap-y-4">
           <h2 >{{ title }}</h2>
           <h3 class="sub-title">{{ subtitle }}</h3>

@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import type { ClassName } from '~/types';
 import type { SectionAbout } from './dataAbout';
 import { twMerge } from 'tailwind-merge';
 
  
 
 
-type AboutProps = SectionAbout & ClassName
-const {className = ''} =defineProps<AboutProps>()
+type AboutProps = SectionAbout 
+defineProps<AboutProps>()
 
 </script>
 
 <template>
-       <section id="about" :class="twMerge('flex  justify-start flex-col items-center gap-y-10', className)">
+       <section id="about" :class="twMerge('flex  justify-start flex-col items-center gap-y-10', $attrs.class as string)">
         <div class="flex justify-center items-center gap-4 flex-col">
           <h2 id="about-me" aria-describedby="me">{{ title }}</h2>
           <h3 id="who-i-am" aria-describedby="me" class="sub-title">{{ subtitle }}</h3>
