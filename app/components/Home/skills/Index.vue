@@ -24,11 +24,13 @@ defineProps<SkillsProps>()
           <ul id="tech" aria-labelledby="dev" aria-describedby="sentence" class="flex justify-center items-center gap-x-4 sm:gap-x-6 gap-y-3 sm:gap-y-5 max-w-11/12 sm:max-w-10/12 xl:max-w-[45%] flex-wrap">
 
 
-          
-<UiBadgesBadgeGradient v-for="stack in skills" :key="stack.name" :data-stack="stack.name">
-          <Icon :class="{'rounded-md': stack.name.toLowerCase().includes('typescript')}" aria-hidden="false" :aria-label="stack.name" size="50" :name="stack.iconName" />
-            </UiBadgesBadgeGradient>
+
+<UiBadgesBadgeGradient class="group" v-for="stack in skills" :key="stack.name" >
+    <UiTooltip>{{ stack.name }}</UiTooltip>
+    <Icon  :class="{'rounded-md': stack.name.toLowerCase().includes('typescript')}" aria-hidden="false" :aria-label="stack.name" size="50" :name="stack.iconName" />
+      </UiBadgesBadgeGradient>
           </ul>
+          
         </div>
         
     
