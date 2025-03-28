@@ -28,7 +28,7 @@ const {className = ''} = defineProps<SkillsProps>()
 
           
 <UiBadgesBadgeGradient v-for="stack in skills" :key="stack.name" :data-stack="stack.name">
-          <Icon aria-hidden="false" :aria-label="stack.name" size="50" :name="stack.iconName" />
+          <Icon :class="{'rounded-md': stack.name.toLowerCase().includes('typescript')}" aria-hidden="false" :aria-label="stack.name" size="50" :name="stack.iconName" />
             </UiBadgesBadgeGradient>
           </ul>
         </div>
