@@ -6,7 +6,7 @@ import type { ButtonHTMLAttributes } from 'vue';
  
     export type BtnProps = {
         showRipple?: 'true' | 'false', // because type boolean does not work here :/ (it remains boolean and not boolean or undifined when destructuring props)
-        onClick: (e?: MouseEvent) => void
+        onClick?: (e?: MouseEvent) => void
     } & /* @vue-ignore */ Partial<ButtonHTMLAttributes>
 
    const props = defineProps<BtnProps>()

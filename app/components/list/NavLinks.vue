@@ -1,20 +1,26 @@
 <script setup lang="ts">
 import { twMerge } from 'tailwind-merge';
-import type { TNavLink } from './NavLink.vue';
+import type { TNavLink } from '../ui/NavLink.vue';
+import NavLink from '../ui/NavLink.vue';
 
 export interface NavLinksProps {
 
   navLinks: TNavLink[],
-  listClass?: string    
+  listClass?: string,
+  navLinkClick?: () => void,
+  handlePressedNavLinkAttr?: boolean
 
 }
-const {listClass = '', navLinks} = defineProps<NavLinksProps>()
+const {listClass = '', navLinks, navLinkClick, handlePressedNavLinkAttr} = defineProps<NavLinksProps>()
 
 const navLinkss = ref<TNavLink[]>(navLinks)
 
 
-const handleClick = (navLinkId: string) => {
 
+const handleClick = (navLinkId: string) => {
+  navLinkClick?.()
+
+  if (!handlePressedNavLinkAttr) return
 
   navLinkss.value.forEach(link => {
 
@@ -40,7 +46,7 @@ const handleClick = (navLinkId: string) => {
             <li v-for="navLink in navLinkss" :key="navLink.to" class="flex">
 
 
-              <HeaderNavlinksNavLink @click="handleClick(navLink.to)" v-bind="navLink"  />
+              <NavLink @click="handleClick(navLink.to)"  v-bind="navLink"  />
             </li>
             
           </ul>

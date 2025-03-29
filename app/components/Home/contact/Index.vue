@@ -22,7 +22,7 @@ type ContactProps = SectionContact
 
 
       
-        <UiButtonsButtonAnimationTwo class="shadow-sm shadow-accent/50" >Let's connect</UiButtonsButtonAnimationTwo>
+        <UiButtonsButtonAnimationTwo class="shadow-sm shadow-accent/50 hover:font-semibold" >Let's connect</UiButtonsButtonAnimationTwo>
        
       </section>
 </template>

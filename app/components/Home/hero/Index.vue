@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { navLinks } from '~/components/header/dataHeader';
 import type { SectionHero } from './dataHero';
 import { twMerge } from 'tailwind-merge';
-import { _navLinks } from '~/components/header/navlinks/dataNavLinks';
 
  
 
@@ -10,7 +10,7 @@ type HeroProps = SectionHero & {
   delaySubtitle?: string,
   delayTitle?: string
 }
-const {title, delaySubtitle = getAnimationDelay(_navLinks.length + 3) ,delayTitle = getAnimationDelay(_navLinks.length + 4)} = defineProps<HeroProps>()
+const {title, delaySubtitle = getAnimationDelay(navLinks.length + 3) ,delayTitle = getAnimationDelay(navLinks.length + 4)} = defineProps<HeroProps>()
 
 let firstTitle: string;
 let secondTitle: string;

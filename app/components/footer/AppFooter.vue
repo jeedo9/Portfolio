@@ -1,16 +1,15 @@
 <script setup lang="ts">
 import { twMerge } from 'tailwind-merge';
-import { footerLinks } from './dataFooter';
 import type { TLink } from '~/types';
 
 
 export interface AppFooterProps {
   logoName?: string,
   logoClassName?: string,
-  links?: TLink[]
+  links: TLink[]
 
 }
-const {links = footerLinks} = defineProps<AppFooterProps>()
+defineProps<AppFooterProps>()
 
 
 
