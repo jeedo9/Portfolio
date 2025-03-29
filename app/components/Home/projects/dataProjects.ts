@@ -13,7 +13,7 @@ type Project = {
         githubLink: string,
       
             isLive: () => boolean,
-            liveLink: string
+            liveLink?: string
         
     }
 }
@@ -21,6 +21,7 @@ type Project = {
 type SectionProjects = Readonly<{
     projects: Project[]
 } & Section>
+
 
 const sectionProjects : SectionProjects = {
     title: 'My projects',
@@ -47,8 +48,7 @@ const sectionProjects : SectionProjects = {
                 isLive() {
                     return !!this.liveLink
 
-                },
-                liveLink: ''
+                }
                 
             }
         },
@@ -70,11 +70,10 @@ const sectionProjects : SectionProjects = {
                 isLive() {
                     return !!this.liveLink
 
-                },
-                    liveLink: ''
+                }
             }
         }
     ]
 }
 
-export {type SectionProjects, sectionProjects }
+export {type SectionProjects, sectionProjects, type Project }
