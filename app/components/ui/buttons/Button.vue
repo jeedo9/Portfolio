@@ -16,7 +16,7 @@ import Ripple from '../Ripple.vue';
 
    const props = defineProps<BtnProps>()
 
-    const { showRipple,onClick,tag} = props
+    const { showRipple,onClick,tag, tabindex = 0} = props
 
 
 
@@ -35,12 +35,12 @@ const restBtn = ref<Record<string, unknown>>({})
 
     
     if (isBtn(value)) {
-    const { showRipple,onClick,tag, ...rest} = value
+    const { showRipple,onClick,tag, tabindex,...rest} = value
     restBtn.value = rest
 
    }
    else {
-    const { showRipple,onClick,tag, ...rest} = value
+    const { showRipple,onClick,tag, tabindex,...rest} = value
     restLink.value = rest
    }
 
@@ -75,20 +75,20 @@ ripple.value.ripple.className += ' animate-ripple'
 }
 
 
-const classses = [twMerge(`relative border-accent border-2 tracking-tight border-double px-3.5 py-1 rounded-md hover:bg-accent-light bg-clip-padding transition-[background-color]`, useAttrs().class as string), {'overflow-hidden' : showRipple}]
+const classses = [twMerge(`relative border-accent border-2 tracking-tight border-double px-3.5 py-1 rounded-md focus-visible:bg-accent-light hover:bg-accent-light bg-clip-padding transition-[background-color]`, useAttrs().class as string), {'overflow-hidden' : showRipple}]
 
 </script>
 
 <template>
 
-    <NuxtLink v-if="tag === 'link'" ref="link" :class="classses" v-bind="restBtn"   @click="handle">
+    <NuxtLink v-if="tag === 'link'" ref="link" :class="classses" :tabindex v-bind="restBtn"   @click="handle">
 
         <Ripple v-if="showRipple" ref="ripple" />
         <slot />
         
     </NuxtLink>
 
-    <button v-else ref="btn" :class="classses"  v-bind="restLink"   @click="handle">
+    <button v-else ref="btn" :class="classses"  v-bind="restLink" :tabindex  @click="handle">
 
         <Ripple v-if="showRipple" ref="ripple" />
         

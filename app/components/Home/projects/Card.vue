@@ -27,7 +27,7 @@ onMounted(() => {
 
 <template>
     
-    <div :class="['flex justify-center items-center gap-x-5', {'flex-row-reverse': reverse}]">
+    <div :class="['flex justify-center items-center gap-x-5 focus-visible:outline-0', {'flex-row-reverse': reverse}]" tabindex="0">
     <div class="flex flex-col justify-center items-start gap-y-6 ">
             <h4 :id="title" class="h3 bg-gradient-1 text-shadow sm:w-max w-full text-center" :aria-describedby="`project-description-${title}`"  >{{ title }}</h4>
             <p :id="`project-description-${title}`" :aria-labelledby="title" class="bg-muted/50 hover:bg-muted/70 dark:hover:bg-muted/60 transition-[background-color] shadow-md p-7 text-pretty border-border border-[1.5px] border-double bg-clip-padding rounded-md"><span class="underline underline-offset-[3px] hover:underline-offset-[4.5px] transition-[text-underline-offset] decoration-from-font font-medium italic">{{title}}</span> {{ description }}
