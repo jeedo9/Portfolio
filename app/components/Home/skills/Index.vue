@@ -25,7 +25,7 @@ defineProps<SkillsProps>()
 
 
 
-<UiBadgesBadgeGradient class="group" v-for="stack in skills" :key="stack.name" >
+<UiBadgesBadgeGradient v-for="stack in skills" :key="stack.name" class="group" >
     <UiTooltip>{{ stack.name }}</UiTooltip>
     <Icon  :class="{'rounded-md': stack.name.toLowerCase().includes('typescript')}" aria-hidden="false" :aria-label="stack.name" size="50" :name="stack.iconName" />
       </UiBadgesBadgeGradient>

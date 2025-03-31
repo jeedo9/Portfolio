@@ -1,53 +1,97 @@
 
 <script setup lang="ts">
+import type { NuxtLinkProps } from '#app';
 import { twMerge } from 'tailwind-merge';
-import type { ButtonHTMLAttributes } from 'vue';
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'vue';
+import Ripple from '../Ripple.vue';
 
+
+
+    type Shared = {showRipple?: boolean}
+    type Anchor =  /* @vue-ignore */ Partial<AnchorHTMLAttributes> & Partial<NuxtLinkProps> & {tag: 'link'}  
+    type Btn =   {tag?: 'btn'}  & /* @vue-ignore */ Partial<ButtonHTMLAttributes> 
+    
  
-    export type BtnProps = {
-        showRipple?: 'true' | 'false', // because type boolean does not work here :/ (it remains boolean and not boolean or undifined when destructuring props)
-        onClick?: (e?: MouseEvent) => void
-    } & /* @vue-ignore */ Partial<ButtonHTMLAttributes>
+    export type BtnProps = (Btn | Anchor) & Shared
 
    const props = defineProps<BtnProps>()
 
-   const { showRipple = 'true'  , type = 'button', onClick, ...rest} = props
+    const { showRipple,onClick,tag} = props
+
+
 
    
-   const ref = useTemplateRef('btn')
+ 
+    const restLink = ref<Record<string, unknown>>({})
+const restBtn = ref<Record<string, unknown>>({})
 
-   defineExpose({
-    ref
+
+   const isBtn = (value: BtnProps): value is Btn => {
+        return value.tag === 'btn' || !value.tag
+   }
+ 
+
+   watch(props, (value) => {
+
+    
+    if (isBtn(value)) {
+    const { showRipple,onClick,tag, ...rest} = value
+    restBtn.value = rest
+
+   }
+   else {
+    const { showRipple,onClick,tag, ...rest} = value
+    restLink.value = rest
+   }
+
    })
 
+   const refBtn = useTemplateRef('btn')
+   const refLink = useTemplateRef('link')
    const ripple = useTemplateRef('ripple')
+
+   defineExpose({
+    refBtn,
+    refLink
+   })
+
 
    const handle = (e: MouseEvent) => {
 
     onClick?.(e)
-    if (!ripple.value || !showRipple) return;
+    if (!ripple.value?.ripple || !showRipple) return;
 
-const rect = ripple.value.parentElement?.getBoundingClientRect();
+const rect = refBtn.value?.getBoundingClientRect();
 if (!rect) return;
 
 const top = e.clientY - rect.top;
 const left = e.clientX - rect.left;
 
-ripple.value.style.cssText = `top: ${top}px; left: ${left}px;`
 
-ripple.value.className += ' animate-ripple'
+ripple.value.ripple.style.cssText = `top: ${top}px; left: ${left}px;`
+
+ripple.value.ripple.className += ' animate-ripple'
 
 }
 
-const animationEnd = () => ripple.value?.classList.remove('animate-ripple')
+
+const classses = [twMerge(`relative border-accent border-2 tracking-tight border-double px-3.5 py-1 rounded-md hover:bg-accent-light bg-clip-padding transition-[background-color]`, useAttrs().class as string), {'overflow-hidden' : showRipple}]
 
 </script>
 
 <template>
 
-    <button @click="handle" ref="btn"  :class="twMerge(`${showRipple === 'true'? 'overflow-hidden' : ''} relative border-accent border-2 tracking-tight border-double px-3.5 py-1 rounded-md hover:bg-accent/25 bg-clip-padding transition-[background-color]`, $attrs.class as string)" :type v-bind="rest">
+    <NuxtLink v-if="tag === 'link'" ref="link" :class="classses" v-bind="restBtn"   @click="handle">
 
-        <span v-if="showRipple === 'true'" v-on:animationend="animationEnd" ref="ripple" class="absolute rounded-full opacity-0 -translate-x-1/2 -translate-y-1/2 size-10 bg-white/45 dark:bg-white/23"></span>
+        <Ripple v-if="showRipple" ref="ripple" />
+        <slot />
+        
+    </NuxtLink>
+
+    <button v-else ref="btn" :class="classses"  v-bind="restLink"   @click="handle">
+
+        <Ripple v-if="showRipple" ref="ripple" />
+        
         <slot />
         </button>
 </template>

@@ -46,7 +46,7 @@ const handleClick = (navLinkId: string) => {
             <li v-for="navLink in navLinkss" :key="navLink.to" class="flex">
 
 
-              <NavLink @click="handleClick(navLink.to)"  v-bind="navLink"  />
+              <NavLink v-bind="navLink"  @click="handleClick(navLink.to)"  />
             </li>
             
           </ul>

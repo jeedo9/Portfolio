@@ -8,10 +8,7 @@ type MenuProps = NavLinksProps & ResumeAndThemeButtonsProps & {
   isOpen: boolean,
 }
 
-const p  = defineProps<MenuProps>()
-
-console.log(p.navLinkClick)
-
+defineProps<MenuProps>()
 
 </script>
 

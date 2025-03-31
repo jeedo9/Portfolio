@@ -68,7 +68,7 @@ cleanUp(() => {window.onscroll = null})
         <NavLinks :handle-pressed-nav-link-attr="true" :nav-links />
         <HeaderResumeAndThemeButtons :delay="delayNavLinks" :animation="resumeThemeBtnAnimation || 'animate-slide-down-left opacity-0'" />
       </div>
-      <UiButtonsHamburger @click="toggleMenu" :open="showMenu" />
+      <UiButtonsHamburger :open="showMenu" @click="toggleMenu" />
 
       </div>
 

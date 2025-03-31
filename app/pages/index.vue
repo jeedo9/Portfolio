@@ -6,6 +6,9 @@
   import { sectionHero } from '~/components/Home/hero/dataHero';
 import { sectionContact } from '~/components/Home/contact/dataContact';
 
+definePageMeta({
+  name: 'Home'
+})
 
 
 </script>

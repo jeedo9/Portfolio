@@ -22,3 +22,7 @@
 @utility text-shadow {
     @apply  drop-shadow-sm dark:drop-shadow-[0_1px_2px_var(--color-muted)]
 }
+
+@utility disabled {
+    @apply cursor-not-allowed opacity-65
+}

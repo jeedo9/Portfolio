@@ -32,6 +32,7 @@
         --color-background: var(--color-slate-50);
         --color-foreground:  var(--color-slate-600);
         --color-accent: var(--color-sky-400);
+        --color-accent-light: --alpha(var(--color-accent) / 25%);
         --color-muted:   var(--color-slate-300);
         --color-border:  var(--color-slate-400);
         --animate-spin: spin 5s ease-in-out infinite;
@@ -94,14 +95,14 @@
 
     
     *::selection {
-        @apply bg-accent/20 text-foreground/65
+        @apply bg-accent-light text-foreground/65
     }
 
     button, img /*, input::placeholder */ {
         user-select: none;
     }
-    button {
-        @apply disabled:opacity-45 disabled:cursor-not-allowed
+    button:disabled {
+        @apply disabled
     }
     button, a {
         cursor: pointer;

@@ -3,7 +3,7 @@ import type { TNavLink } from "~/components/ui/NavLink.vue"
 
 export const navLinks : TNavLink[] = [
     {
-      to: '#about',
+      to: '/#about',
       text: 'About',
       animation: 'animate-slide-down-left',
       delay: getAnimationDelay(1),
@@ -12,7 +12,7 @@ export const navLinks : TNavLink[] = [
       isPressed: false
     },
     {
-      to: '#skills',
+      to: '/#skills',
       text: 'Skills',
       animation: 'animate-slide-down-left',
       delay: getAnimationDelay(2),
@@ -23,7 +23,7 @@ export const navLinks : TNavLink[] = [
     },
     {
 
-      to: '#projects',
+      to: '/#projects',
       text: 'Projects',
       animation: 'animate-slide-down-left',
       delay: getAnimationDelay(3),
@@ -33,7 +33,7 @@ export const navLinks : TNavLink[] = [
     },
     {
    
-      to: '#contact',
+      to: '/#contact',
       text: 'Contact',
       animation: 'animate-slide-down-left',
       delay: getAnimationDelay(4),
