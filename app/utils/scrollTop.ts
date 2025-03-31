@@ -1,0 +1,1 @@
+export default () => window.scrollTo({top: 0})

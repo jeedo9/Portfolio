@@ -17,5 +17,10 @@ import { AUTHOR_NAME, DEFAULT_DELAY } from '~/utils/constants';
    
 </script>
 <template>
-        <as role="button" :class="twMerge(`cursor-grab active:cursor-grabbing relative before:content-[''] before:absolute before:h-px before:w-0 before:bg-accent before:right-0 before:bottom-1 hover:before:w-[105%] hover:before:right-auto hover:before:left-0 before:transition-all opacity-0 ${animation}`, $attrs.class as string)" :style="{animationDelay: delay}" >{{ name }}</as>
+        <NuxtLink :to="{name: 'Home'}" @click="scrollTop" class="group">
+        <as role="button" :class="twMerge(`cursor-grab active:cursor-grabbing relative before:content-[''] before:absolute before:h-px before:w-0 before:bg-accent before:right-0 before:bottom-1 group-focus-visible:before:w-[105%] hover:before:w-[105%] group-focus-visible:before:right-auto group-focus-visible:before:left-0 hover:before:right-auto hover:before:left-0 before:transition-all opacity-0 ${animation}`, $attrs.class as string)" :style="{animationDelay: delay}" >
+                {{ name }}
+        </as>
+        </NuxtLink>
+             
 </template>

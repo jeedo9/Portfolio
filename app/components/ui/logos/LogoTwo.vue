@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { twMerge } from 'tailwind-merge';
 import type {HeadingTags} from '../../../types'
+import { NuxtLink } from '#components';
 
     interface LogoTwoProps  {
 
@@ -15,8 +16,14 @@ import type {HeadingTags} from '../../../types'
 </script>
 <template>
     
-    <as :class="twMerge('logo', $attrs.class as string)">
-        {{ name }}
-    </as>
+    <NuxtLink href="#">
+
+        <as role="button" :class="twMerge('logo', $attrs.class as string)">
+    
+            {{ name }}
+        </as>
+
+        </NuxtLink>
+  
 
 </template>
