@@ -1,20 +1,20 @@
-const {author: {name, socials: {linkedin, github, mail}, school: {name: schoolName, link : schoolLink}}, animation: {delay, delayUnity}} = useAppConfig()
+const AUTHOR_NAME = 'Pierre'
 
-const AUTHOR_NAME = name
+const WEBSITE_NAME = "Pierre's Portfolio"
 
-const DEFAULT_DELAY = delay
+const DEFAULT_DELAY = 600
 
-const DEFAULT_DELAY_UNITY = delayUnity
+const DEFAULT_DELAY_UNITY = 'ms'
 
-const LINKEDIN = linkedin;
+const LINKEDIN = 'www.linkedin.com/in/pierre-matar-38b7832a0';
 
-const GITHUB = github;
+const GITHUB = 'https://github.com/jeeddo';
 
-const MAIL = mail
+const MAIL = `mailto:pierrematar1912@gmail.com`
 
-const SCHOOL = schoolName
+const SCHOOL = 'ESIEE Paris'
 
-const SCHOOL_LINK = schoolLink
+const SCHOOL_LINK = 'https://www.esiee.fr/'
 
 
-export {AUTHOR_NAME, DEFAULT_DELAY, DEFAULT_DELAY_UNITY, MAIL, GITHUB, LINKEDIN, SCHOOL, SCHOOL_LINK}
+export {AUTHOR_NAME, DEFAULT_DELAY, DEFAULT_DELAY_UNITY, MAIL, GITHUB, LINKEDIN, SCHOOL, SCHOOL_LINK, WEBSITE_NAME}
