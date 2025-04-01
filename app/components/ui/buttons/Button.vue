@@ -31,6 +31,7 @@ const restBtn = ref<Record<string, unknown>>({})
    }
  
 
+
    watch(props, (value) => {
 
     
@@ -59,9 +60,11 @@ const restBtn = ref<Record<string, unknown>>({})
    const handle = (e: MouseEvent) => {
 
     onClick?.(e)
+
     if (!ripple.value?.ripple || !showRipple) return;
 
-const rect = refBtn.value?.getBoundingClientRect();
+const rect = refBtn.value?.getBoundingClientRect() || refLink.value?.$el.getBoundingClientRect();
+
 if (!rect) return;
 
 const top = e.clientY - rect.top;

@@ -42,9 +42,9 @@ onMounted(() => {
               <span role="complementary" aria-roledescription="This is the other technologies used for this project" :data-complementary="stack.slice(maxStack).join(', ')" class="before:content-[attr(data-complementary)] before:whitespace-nowrap before:border-border/80 before:border-[.7px] before:text-muted dark:before:text-background cursor-default before:shadow before:absolute relative before:-top-8 before:text-[13px] before:bg-foreground dark:before:bg-border before:px-2 before:rounded before:right-1/2 before:translate-x-1/2 md:before:translate-x-0 md:before:-right-0.5 before:scale-0 before:origin-bottom empty:hidden md:before:origin-bottom-right hover:before:scale-100 hover:before:delay-450 before:transition-transform">{{ stack.slice(maxStack).length ? '+' + stack.slice(maxStack).length : '' }}</span>
             </div>
             <div class="flex justify-center items-center gap-x-2">
-              <UiButtonsButtionIcon :to="view.githubLink" class="*:hover:scale-107" tag="link" icon-name="mynaui:brand-github" icon-slug="github" />
+              <UiButtonsButtionIcon show-ripple :to="view.githubLink" class="*:hover:scale-107" tag="link" icon-name="mynaui:brand-github" icon-slug="github" />
 
-            <UiButtonsButtionIcon :to="view.liveLink" :class="['*:hover:scale-107', {'disabled': !view.isLive()}]" tag="link" icon-name="mynaui:external-link" icon-slug="external link" />
+            <UiButtonsButtionIcon show-ripple :to="view.liveLink" :class="['*:hover:scale-107', {'disabled': !view.isLive()}]" tag="link" icon-name="mynaui:external-link" icon-slug="external link" />
              
 
             </div>
