@@ -1,4 +1,5 @@
 import tailwindcss from "@tailwindcss/vite";
+import { AUTHOR_LASTNAME, WEBSITE_DESCRIPTION , WEBSITE_NAME, AUTHOR_NAME} from "./app/utils/constants";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
@@ -16,6 +17,29 @@ export default defineNuxtConfig({
     plugins: [
       tailwindcss(),
     ],
+  },
+  app: {
+    head: {
+      meta: [
+      // Open Graph (Facebook, LinkedIn...)
+      { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: WEBSITE_NAME },
+      { property: 'og:description', content: WEBSITE_DESCRIPTION },
+      { property: 'og:url', content: '' },
+
+      // Twitter
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:description', content: WEBSITE_DESCRIPTION },
+      { name: 'twitter:creator', content: AUTHOR_NAME + ' ' + AUTHOR_LASTNAME },
+      { name: 'twitter:site', content: WEBSITE_NAME },
+      { name: 'twitter:url', content: '' },
+      ],
+      link: [
+        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },  
+        { rel: 'canonical', href: '' },     
+      ]
+    },
+
   },
   future: {
     compatibilityVersion: 4

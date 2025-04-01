@@ -15,8 +15,10 @@ const maxStack = ref<3 | 4>(4)
 onMounted(() => {
   window.onresize = () => {
     const windowWidth = window.innerWidth
-    if (windowWidth >= 768 && windowWidth <= 1024) maxStack.value = 3
-    else if (windowWidth > 1024 || windowWidth < 768) maxStack.value = 4
+    const md = 768;
+    const lg = 1024;
+    if (windowWidth >= md && windowWidth <= lg) maxStack.value = 3
+    else if (windowWidth > lg || windowWidth < md) maxStack.value = 4
   }
 
 

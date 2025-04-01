@@ -3,6 +3,20 @@ import { Vue3Lottie } from 'vue3-lottie';
 import NotFound from '../assets/lotties/NotFound.json'
  
 
+useHead({
+    title: '404'
+})
+
+useSeoMeta({
+  ogTitle: '404',
+  ogImage: '/images/OGImg404.png',
+  ogImageType: 'image/png',
+  ogImageAlt: 'Website 404 Page',
+  twitterImage: '/images/OGImg404.png',
+  twitterImageAlt: 'Website 404 Page',
+  twitterImageType: 'image/png'
+})
+
 </script>
 
 <template>

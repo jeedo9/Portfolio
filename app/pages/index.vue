@@ -9,7 +9,21 @@ import { sectionContact } from '~/components/Home/contact/dataContact';
 definePageMeta({
   name: 'Home'
 })
+const title = useRoute().meta.name
 
+useHead({
+  title
+})
+
+useSeoMeta({
+  ogTitle: title,
+  ogImage: '/images/OGImg.png',
+  ogImageType: 'image/png',
+  ogImageAlt: 'Website Home Page',
+  twitterImage: '/images/OGImg.png',
+  twitterImageAlt: 'Website Home Page',
+  twitterImageType: 'image/png'
+})
 
 </script>
 
@@ -17,11 +31,9 @@ definePageMeta({
    
     <main class="container">
       <HomeHero v-bind="sectionHero" />
-      <HomeAbout v-bind="sectionAbout" />
-      <HomeSkills v-bind="sectionSkills" />
-      <HomeProjects v-bind="sectionProjects" />
-      <HomeContact v-bind="sectionContact" />
-
-
+      <LazyHomeAbout v-bind="sectionAbout" />
+      <LazyHomeSkills v-bind="sectionSkills" />
+      <LazyHomeProjects v-bind="sectionProjects" />
+      <LazyHomeContact v-bind="sectionContact" />
     </main>
 </template>

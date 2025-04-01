@@ -39,6 +39,7 @@ type Tuple2String = [string, string]
 
   showMenu.value = !showMenu.value}
 
+  const isMobile = inject('is-mobile')
 
   watchEffect(cleanUp => {
     const mode = useColorMode().value
@@ -63,7 +64,7 @@ cleanUp(() => {window.onscroll = null})
        
       <div class="lg:max-w-6xl transition-[max-width] duration-(--duration-large) max-w-4xl px-7 w-full flex justify-between items-center h-4/5">
         <UiLogosLogoMain :name="logoName" :delay="logoDelay" :animation="logoAnimation" :class="logoClassName"  />
-      <div class="justify-center items-center gap-x-16 md:flex hidden">
+      <div v-if="!isMobile" class="justify-center items-center gap-x-16 md:flex hidden">
       
         <NavLinks :handle-pressed-nav-link-attr="true" :nav-links />
         <HeaderResumeAndThemeButtons :delay="delayNavLinks" :animation="resumeThemeBtnAnimation || 'animate-slide-down-left opacity-0'" />

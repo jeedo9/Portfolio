@@ -13,6 +13,8 @@ import Ripple from '../Ripple.vue';
     
  
     export type BtnProps = (Btn | Anchor) & Shared
+   type Rest = Record<string, unknown>
+
 
    const props = defineProps<BtnProps>()
 
@@ -20,10 +22,9 @@ import Ripple from '../Ripple.vue';
 
 
 
-   
  
-    const restLink = ref<Record<string, unknown>>({})
-const restBtn = ref<Record<string, unknown>>({})
+    const restLink = ref<Rest>({})
+const restBtn = ref<Rest>({})
 
 
    const isBtn = (value: BtnProps): value is Btn => {
