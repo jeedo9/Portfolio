@@ -53,8 +53,9 @@ if (window.scrollY >= show || document.documentElement.scrollTop >= show) showSh
 else showShadow.value = false
 
 }
-window.onscroll = handleShadow
-cleanUp(() => {window.onscroll = null})
+
+window.addEventListener('scroll', handleShadow)
+cleanUp(() => window.removeEventListener('scroll', handleShadow))
   })
 
 
@@ -64,9 +65,9 @@ cleanUp(() => {window.onscroll = null})
        
       <div class="lg:max-w-6xl transition-[max-width] duration-(--duration-large) max-w-4xl px-7 w-full flex justify-between items-center h-4/5">
         <UiLogosLogoMain :name="logoName" :delay="logoDelay" :animation="logoAnimation" :class="logoClassName"  />
-      <div v-if="!isMobile" class="justify-center items-center gap-x-16 md:flex hidden">
+      <div v-if="!isMobile" class="justify-center items-center gap-x-16 flex">
       
-        <NavLinks :handle-pressed-nav-link-attr="true" :nav-links />
+        <NavLinks handle-pressed-nav-link-attr :nav-links />
         <HeaderResumeAndThemeButtons :delay="delayNavLinks" :animation="resumeThemeBtnAnimation || 'animate-slide-down-left opacity-0'" />
       </div>
       <UiButtonsHamburger :open="showMenu" @click="toggleMenu" />
