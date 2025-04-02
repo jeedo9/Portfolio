@@ -12,29 +12,25 @@ type HeroProps = SectionHero & {
 }
 const {title, delaySubtitle = getAnimationDelay(navLinks.length + 3) ,delayTitle = getAnimationDelay(navLinks.length + 4)} = defineProps<HeroProps>()
 
-let firstTitle: string;
-let secondTitle: string;
+let firstTitle: string = '';
+let secondTitle: string = '';
 
 if (title.includes(', ')) {
   const [title1, title2] = title.split(', ', 2);
-  
-  
   firstTitle =  title1 || ''; 
-  secondTitle = title2 || ''
-
-
-
+  secondTitle = title2 || '';
 }
 
-
+const isMobile = inject('is-mobile')
 </script>
 
 
 <template>
-          <section :class="twMerge('flex justify-center items-center', $attrs.class as string)">
+          <section :class="twMerge('flex opacity-100 justify-center items-center', $attrs.class as string)">
         <div class="flex justify-center items-center flex-col gap-y-5">
           <p class="md:text-2xl text-xl bg-gradient-2 animate-slide-up opacity-0" :style="{animationDelay: delaySubtitle}">{{ subtitle }}</p>
           <p class="md:text-5xl sm:text-4xl text-3xl  text-center leading-snug bg-gradient-1 animate-slide-up opacity-0" :style="{animationDelay: delayTitle}">{{ firstTitle }} <br> {{ secondTitle }} </p>
+          <UiButtonsButton v-if="isMobile" tag="link" to="#projects" class="px-5.5 py-3.5 mt-9" show-ripple>Check out my work</UiButtonsButton>
         </div>
       </section>
 </template>

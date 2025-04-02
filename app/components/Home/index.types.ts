@@ -5,6 +5,11 @@ type Section = {
     subtitle: string
 }
 
+type SectionsProps = {
+    observe?: boolean
+}
+
 export type {
-    Section
+    Section,
+    SectionsProps
 }

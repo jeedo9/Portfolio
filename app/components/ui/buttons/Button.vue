@@ -8,7 +8,7 @@ import Ripple from '../Ripple.vue';
 
 
     type Shared = {showRipple?: boolean}
-    type Anchor =  /* @vue-ignore */ Partial<AnchorHTMLAttributes> & Partial<NuxtLinkProps> & {tag: 'link'}  
+    type Anchor =  Partial<NuxtLinkProps> & {tag: 'link'} &  /* @vue-ignore */ Partial<AnchorHTMLAttributes> 
     type Btn =   {tag?: 'btn'}  & /* @vue-ignore */ Partial<ButtonHTMLAttributes> 
     
  
@@ -79,7 +79,7 @@ ripple.value.ripple.className += ' animate-ripple'
 }
 
 
-const classses = [twMerge(`relative border-accent border-2 tracking-tight border-double px-3.5 py-1 rounded-md focus-visible:bg-accent-light hover:bg-accent-light bg-clip-padding transition-[background-color]`, useAttrs().class as string), {'overflow-hidden' : showRipple}]
+const classses = [twMerge(`relative sm:text-base text-sm border-accent border-2 tracking-tight border-double px-3.5 py-1 rounded-md focus-visible:bg-accent-light hover:bg-accent-light bg-clip-padding transition-[background-color]`, useAttrs().class as string), {'overflow-hidden' : showRipple}]
 
 </script>
 

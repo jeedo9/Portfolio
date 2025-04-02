@@ -1,12 +1,31 @@
 <script setup lang="ts">
+import useObserver from '~/composables/useObserver';
 import FullStack from '../../../assets/lotties/FullStack.json'
 import type { SectionSkills } from './dataSkills';
 import { twMerge } from 'tailwind-merge';
 import { Vue3Lottie } from 'vue3-lottie';
+import type { SectionsProps } from '../index.types';
 
 
-type SkillsProps = SectionSkills
-defineProps<SkillsProps>()
+type SkillsProps = SectionSkills & SectionsProps
+const {observe} = defineProps<SkillsProps>()
+
+
+observe && useObserver((entries, observer) => {
+entries.forEach(entry => {
+
+
+  if (entry.isIntersecting) {
+const skills = document.querySelectorAll('.skill')
+    skills.forEach(skill => {
+      skill.classList.add('animate-slide-down-right')
+    })
+    observer.unobserve(entry.target)
+  }
+
+})},  'tech', undefined, {
+threshold: .1
+})
 
 
 </script>
@@ -25,7 +44,7 @@ defineProps<SkillsProps>()
 
 
 
-<UiBadgesBadgeGradient tabindex="0" v-for="stack in skills" :key="stack.name" class="group focus-visible:outline-0" >
+<UiBadgesBadgeGradient tabindex="0" v-for="stack in skills" :key="stack.name" :style="{animationDelay: stack.delay}" :class="['skill group focus-visible:outline-0', {'opacity-0': observe}]" >
     <UiTooltip>{{ stack.name }}</UiTooltip>
     <Icon  :class="{'rounded-md': stack.name.toLowerCase().includes('typescript')}" aria-hidden="false" :aria-label="stack.name" size="50" :name="stack.iconName" />
       </UiBadgesBadgeGradient>

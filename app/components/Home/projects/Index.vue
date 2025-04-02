@@ -1,14 +1,27 @@
 <script setup lang="ts">
+import useObserver from '~/composables/useObserver';
 import Card from './Card.vue';
 import type { SectionProjects } from './dataProjects';
 import { twMerge } from 'tailwind-merge';
+import type { SectionsProps } from '../index.types';
 
  
 
-type ProjectsProps = SectionProjects
+type ProjectsProps = SectionProjects & SectionsProps
 
- defineProps<ProjectsProps>()
+ const {observe} = defineProps<ProjectsProps>()
 
+
+  observe &&  useObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+
+          entry.target.classList.add('animate-fade-in')
+        observer.unobserve(entry.target)
+      }
+    })},  '.card', true, {
+threshold: .4
+})
 
 </script>
 
@@ -19,6 +32,6 @@ type ProjectsProps = SectionProjects
           <h2 >{{ title }}</h2>
           <h3 class="sub-title">{{ subtitle }}</h3>
         </div>
-        <Card  v-for="(project, i) in projects" :key="project.title" :reverse="i % 2 === 0" v-bind="project" />
+        <Card  :class="['card', {'opacity-0' : observe}]" v-for="(project, i) in projects" :key="project.title" :reverse="i % 2 === 0" v-bind="project" />
       </section>
 </template>
