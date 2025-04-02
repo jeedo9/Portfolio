@@ -7,7 +7,8 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/icon',
     '@nuxtjs/google-fonts',
-    '@nuxtjs/color-mode'
+    '@nuxtjs/color-mode',
+    '@pinia/nuxt'
   ],
   image: {
     quality: 90
