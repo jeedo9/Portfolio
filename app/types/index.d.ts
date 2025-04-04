@@ -16,4 +16,10 @@ type HeadingTags = Extract<keyof HTMLElementTagNameMap, `h${2 | 3 | 4 | 5 | 6}`>
 
 type TLink = (Link & Required<Pick<Link, 'icon'>>) | (Link & Required<Pick<Link, 'text'>>);
 
-export type {TLink, Link, Animation, HeadingTags}
+export type TNavLink = TLink & {
+    animation: Animation,
+    delay: string,
+    isPressed?: boolean
+  }
+
+export type {TLink, Link, Animation, HeadingTags, TNavLink}

@@ -1,6 +1,6 @@
 
 <script setup lang="ts">
-import type { NuxtLinkProps } from '#app';
+// import type { NuxtLinkProps } from '#app';
 import { twMerge } from 'tailwind-merge';
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'vue';
 import Ripple from '../Ripple.vue';
@@ -8,7 +8,7 @@ import Ripple from '../Ripple.vue';
 
 
     type Shared = {showRipple?: boolean}
-    type Anchor =  Partial<NuxtLinkProps> & {tag: 'link'} &  /* @vue-ignore */ Partial<AnchorHTMLAttributes> 
+    type Anchor =  /* Partial<NuxtLinkProps> */ & {tag: 'link'} &  /* @vue-ignore */ Partial<AnchorHTMLAttributes>
     type Btn =   {tag?: 'btn'}  & /* @vue-ignore */ Partial<ButtonHTMLAttributes> 
     
  
@@ -46,7 +46,7 @@ const restBtn = ref<Rest>({})
     restLink.value = rest
    }
 
-   })
+   }, {immediate: true})
 
    const refBtn = useTemplateRef('btn')
    const refLink = useTemplateRef('link')
@@ -85,14 +85,14 @@ const classses = [twMerge(`relative sm:text-base text-sm border-accent border-2 
 
 <template>
 
-    <NuxtLink v-if="tag === 'link'" ref="link" :class="classses" :tabindex v-bind="restBtn"   @click="handle">
+    <NuxtLink v-if="tag === 'link'" ref="link" :class="classses" :tabindex v-bind="restLink"   @click="handle">
 
         <Ripple v-if="showRipple" ref="ripple" />
         <slot />
         
     </NuxtLink>
 
-    <button v-else ref="btn" :class="classses"  v-bind="restLink" :tabindex  @click="handle">
+    <button v-else ref="btn" :class="classses"  v-bind="restBtn" :tabindex  @click="handle">
 
         <Ripple v-if="showRipple" ref="ripple" />
         

@@ -2,6 +2,8 @@
 import Torch from './components/ui/Torch.vue';
 
 
+export type InjectIsMobile = globalThis.Ref<boolean, boolean>
+
 const mode = useColorMode()
 
 useHead({
@@ -10,9 +12,11 @@ useHead({
   }
 })
 
+
 const {isMobile} = useIsMobile()
 
-provide('is-mobile', isMobile)
+
+provide(IS_MOBILE_KEY, isMobile)
 
 </script>
 

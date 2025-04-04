@@ -23,7 +23,7 @@ useSeoMeta({
     <main class="flex flex-col justify-center items-center gap-y-3 animate-pop" style="transform: scale(0);height: var(--container-height); animation-delay: calc(var(--animation-delay) + 2s);">
         <Vue3Lottie aria-label="404 not found animation" height="70%" :animation-data="NotFound" />
 
-        <UiButtonsButtonAnimationOne class="capitalize px-5.5 py-3 hover:text-current" :to="{name: 'Home'}" tag="link" >
+        <UiButtonsButtonAnimationOne :to="{name: 'Home'}" replace class="capitalize px-5.5 py-3 hover:text-current" tag="link" >
             go back home
      </UiButtonsButtonAnimationOne>
     </main>

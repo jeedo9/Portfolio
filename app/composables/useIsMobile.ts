@@ -1,19 +1,28 @@
+import throttle from "lodash.throttle"
+
 export default () => {
-    const isMobile = ref(false)
+
+       
+    let windowWidth = window.innerWidth;
+    const md = 768
+
+    const isMobile = ref(windowWidth <= md)
+
     onMounted(() => {
 
         const handleResize = () => {
-          
-            const windowWidth = window.innerWidth
-            const md = 786
+            let windowWidth = window.innerWidth
+    
             if (windowWidth <= md) isMobile.value = true
             else isMobile.value = false
         }
+
+        const handleResizeThrottled = throttle(handleResize, 100)
     
-        window.addEventListener('resize', handleResize)
+        window.addEventListener('resize', handleResizeThrottled)
 })
 
-    return {
+return {
         isMobile
     }
 }

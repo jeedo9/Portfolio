@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import throttle from 'lodash.throttle';
 import type { Project } from './dataProjects';
 
 
@@ -21,7 +22,9 @@ onMounted(() => {
     if (windowWidth >= md && windowWidth <= lg) maxStack.value = 3
     else if (windowWidth > lg || windowWidth < md) maxStack.value = 4
   }
-  window.addEventListener('resize', handleResize)
+
+  const handleResizeThrottled = throttle(handleResize, 500)
+  window.addEventListener('resize', handleResizeThrottled)
 })
 
 </script>

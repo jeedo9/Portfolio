@@ -1,20 +1,16 @@
 <script setup lang="ts">
-import type { Animation, TLink } from '~/types';
+import type { NuxtLinkProps } from '#app';
+import type { TNavLink } from '~/types';
 
-export type TNavLink = TLink & {
-    animation: Animation,
-    delay: string,
-    isPressed?: boolean
-  }
+
+
+   type NavLinkProps = TNavLink & NuxtLinkProps
   
-   const  {animation, className = '', target = '_self'} =  defineProps<TNavLink>()
-
-
-
+   const  {animation, target = '_self'} =  defineProps<NavLinkProps>()
 
 </script>
 <template>
 
-            <NuxtLink  :class="animation + ' ' + (typeof className === 'function' ? className() : className)" :style="{animationDelay: delay}" :to="to" :target="target">{{ text ?? '' }} <Icon v-if="icon" aria-hidden="false" :name="icon.name" :aria-label="icon.slug" /></NuxtLink>
+            <NuxtLink :class="animation + ' ' + (typeof className === 'function' ? className() : className)" :style="{animationDelay: delay}" :to="to" :target="target">{{ text ?? '' }} <Icon v-if="icon" aria-hidden="false" :name="icon.name" :aria-label="icon.slug" /></NuxtLink>
 
 </template>

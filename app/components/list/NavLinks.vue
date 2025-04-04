@@ -1,52 +1,53 @@
 <script setup lang="ts">
 import { twMerge } from 'tailwind-merge';
-import type { TNavLink } from '../ui/NavLink.vue';
+import type { TNavLink } from '~/types';
 import NavLink from '../ui/NavLink.vue';
+import useNavLinksStore from '~/stores/navLinks';
 
 export interface NavLinksProps {
 
   navLinks: TNavLink[],
   listClass?: string,
   navLinkClick?: () => void,
-  handlePressedNavLinkAttr?: boolean
-
+  handlePressedNavLinkAttr?: boolean,
+  navLinksKey?: string
 }
-const {listClass = '', navLinks, navLinkClick, handlePressedNavLinkAttr} = defineProps<NavLinksProps>()
 
-const navLinkss = ref<TNavLink[]>(navLinks)
+const {navLinkClick, handlePressedNavLinkAttr, navLinks, navLinksKey = ''} = defineProps<NavLinksProps>()
 
 
+
+const navLinksStore = useNavLinksStore()
+
+
+if (handlePressedNavLinkAttr) navLinksStore.addNavLinks(navLinks, navLinksKey)
+
+
+// const navLinksArray = computed(() => handlePressedNavLinkAttr ? navLinksStore.navLinksState[navLinksKey] : navLinks) 
+// watch(() => navLinksStore.navLinksState, () => console.log(navLinksArray.value))
 
 const handleClick = (navLinkId: string) => {
   navLinkClick?.()
 
   if (!handlePressedNavLinkAttr) return
 
-  navLinkss.value.forEach(link => {
-
-    if (link.isPressed) link.isPressed = false
-  })
-
-  const navLinkIndex = navLinkss.value.findIndex(link => link.to === navLinkId )
-
-  if (navLinkIndex !== -1) {
-    const navLink = navLinkss.value[navLinkIndex]
-
-   if ( navLink?.isPressed !== undefined) navLink.isPressed = true;
-  }
-
+  navLinksStore.handleNavLinksClicked(navLinkId, navLinks)
 }
 
+onUnmounted(() => {
+  if (navLinksKey) navLinksStore.deleteNavLinks(navLinksKey)
+})
    </script>
 
 <template>
         <nav>
           <ul :class="twMerge('justify-center items-center gap-x-10 flex', listClass)">
 
-            <li v-for="navLink in navLinkss" :key="navLink.to" class="flex">
+
+            <li v-for="navLink in (handlePressedNavLinkAttr ? navLinksStore.navLinksState[navLinksKey] : navLinks)" :key="navLink.to" class="flex">
 
 
-              <NavLink v-bind="navLink"  @click="handleClick(navLink.to)"  />
+              <NavLink :aria-current="navLink.isPressed" v-bind="navLink"  @click="handleClick(navLink.to)"  />
             </li>
             
           </ul>

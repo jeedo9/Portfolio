@@ -6,6 +6,9 @@
   import { sectionHero } from '~/components/Home/hero/dataHero';
 import { sectionContact } from '~/components/Home/contact/dataContact';
 import useObserver from '~/composables/useObserver';
+import useNavLinksOnScroll from '~/composables/useNavLinksOnScroll';
+import { navLinks } from '~/components/header/dataHeader';
+
 
 definePageMeta({
   name: 'Home'
@@ -37,15 +40,22 @@ useObserver((entries, observer) => {
   },  'section:not(section:nth-child(1))', true, {
 threshold: .3
 })
+
+useNavLinksOnScroll(navLinks, true, true)
+
+
 </script>
 
 <template>
    
     <main class="container">
-      <HomeHero  v-bind="sectionHero" />
-      <LazyHomeAbout observe v-bind="sectionAbout" />
-      <LazyHomeSkills observe  v-bind="sectionSkills" />
-      <LazyHomeProjects observe  v-bind="sectionProjects" />
-      <LazyHomeContact v-bind="sectionContact" />
+      <HomeHero v-bind="sectionHero" />
+      <HomeAbout observe v-bind="sectionAbout" />
+      <HomeSkills observe  v-bind="sectionSkills" />
+      <HomeProjects observe  v-bind="sectionProjects" />
+      <HomeContact v-bind="sectionContact" />
+
+
     </main>
+
 </template>

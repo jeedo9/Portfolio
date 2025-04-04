@@ -1,4 +1,4 @@
-import type { TNavLink } from "~/components/ui/NavLink.vue"
+import type { TNavLink } from "~/types"
 
 
 export const navLinks : TNavLink[] = [

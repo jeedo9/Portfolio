@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { twMerge } from 'tailwind-merge';
-import type { TNavLink } from '../ui/NavLink.vue';
+import type { TNavLink } from '~/types';
 import type { Animation } from '~/types';
 import NavLinks from '../list/NavLinks.vue';
+import throttle from 'lodash.throttle';
+import { type InjectIsMobile } from '~/app.vue';
+import { IS_MOBILE_KEY } from '#imports';
 
 export interface AppHeaderProps {
   navLinks: TNavLink[],
@@ -39,7 +42,8 @@ type Tuple2String = [string, string]
 
   showMenu.value = !showMenu.value}
 
-  const isMobile = inject('is-mobile')
+   const isMobile = inject<InjectIsMobile>(IS_MOBILE_KEY)
+
 
   watchEffect(cleanUp => {
     const mode = useColorMode().value
@@ -54,8 +58,10 @@ else showShadow.value = false
 
 }
 
-window.addEventListener('scroll', handleShadow)
-cleanUp(() => window.removeEventListener('scroll', handleShadow))
+const handleShadowThrottled = throttle(handleShadow, 300)
+
+window.addEventListener('scroll', handleShadowThrottled)
+cleanUp(() => window.removeEventListener('scroll', handleShadowThrottled))
   })
 
 
@@ -65,9 +71,9 @@ cleanUp(() => window.removeEventListener('scroll', handleShadow))
        
       <div class="lg:max-w-6xl transition-[max-width] duration-(--duration-large) max-w-4xl px-7 w-full flex justify-between items-center h-4/5">
         <UiLogosLogoMain :name="logoName" :delay="logoDelay" :animation="logoAnimation" :class="logoClassName"  />
-      <div v-if="!isMobile" class="justify-center items-center gap-x-16 flex">
+      <div  v-if="!isMobile" class="justify-center items-center gap-x-16 flex">
       
-        <NavLinks handle-pressed-nav-link-attr :nav-links />
+        <NavLinks nav-links-key="navLinks" handle-pressed-nav-link-attr :nav-links />
         <HeaderResumeAndThemeButtons :delay="delayNavLinks" :animation="resumeThemeBtnAnimation || 'animate-slide-down-left opacity-0'" />
       </div>
       <UiButtonsHamburger :open="showMenu" @click="toggleMenu" />
@@ -79,6 +85,5 @@ cleanUp(() => window.removeEventListener('scroll', handleShadow))
 
 
 
-   
     </header>
 </template>
