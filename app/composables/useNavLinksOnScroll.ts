@@ -10,11 +10,11 @@ type Section = {offsetTop: number, offsetBottom: number, id: string}
 export default (navLinks: TNavLink[],resetOnFirstSection?: boolean, disableOnMobile?: boolean, disableOnDesktop?: boolean, extraOffset: number = 210): void => {
     const {handleNavLinksClicked, resetNavLinksClass} = useNavLinksStore()
 
-    const sections = document.querySelectorAll('section')
-        const sectionOne = document.querySelector('section:first-child')
+        let sections: NodeListOf<HTMLElement> | undefined;
+        let sectionOne: HTMLElement | null = null;
         const sectionsData: Section[] = [] 
       
-         const saveSectionData = () => sections.forEach(section => {
+         const saveSectionData = () => sections?.forEach(section => {
           const sectionData = section.getBoundingClientRect()
           sectionsData.push({offsetTop: sectionData.top, offsetBottom: sectionData.bottom, id: section.id})
       
@@ -22,7 +22,9 @@ export default (navLinks: TNavLink[],resetOnFirstSection?: boolean, disableOnMob
 
         const handleOnScroll = () => {
 
+
           sectionsData.forEach(section => {
+
           const isInView = window.scrollY > section.offsetTop - extraOffset && window.scrollY < section.offsetBottom
             if (isInView && section.id === sectionOne?.id && resetOnFirstSection) resetNavLinksClass(navLinks)
              else if (isInView) handleNavLinksClicked(section.id, navLinks)
@@ -54,6 +56,9 @@ export default (navLinks: TNavLink[],resetOnFirstSection?: boolean, disableOnMob
   
 
     onMounted(() => {
+
+      sections = document.querySelectorAll('section')
+      sectionOne = document.querySelector('section:first-child')
       saveSectionData()
         if ((disableOnMobile && !isMobile?.value) || (disableOnDesktop && isMobile?.value) || (!disableOnDesktop && !disableOnMobile)) 
           window.addEventListener('scroll', scrollThrottled)
