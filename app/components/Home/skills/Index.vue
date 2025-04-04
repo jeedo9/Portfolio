@@ -45,8 +45,8 @@ threshold: .1
 
 
 <UiBadgesBadgeGradient v-for="stack in skills" :key="stack.name" tabindex="0" :style="{animationDelay: stack.delay}" :class="['skill group focus-visible:outline-0', {'opacity-0': observe}]" >
-    <UiTooltip>{{ stack.name }}</UiTooltip>
-    <Icon  :class="{'rounded-md': stack.name.toLowerCase().includes('typescript')}" aria-hidden="false" :aria-label="stack.name" size="50" :name="stack.iconName" />
+    <UiTooltipsTooltip aria-describedby="software-skill" aria-roledescription="Name of the software skill I know">{{ stack.name }}</UiTooltipsTooltip>
+    <Icon  id="software-skill" :class="{'rounded-md': stack.name.toLowerCase().includes('typescript')}" aria-hidden="false" :aria-label="stack.name" size="50" :name="stack.iconName" />
       </UiBadgesBadgeGradient>
           </ul>
           
