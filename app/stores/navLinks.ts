@@ -34,7 +34,8 @@ const useNavLinksStore = defineStore('navLinks', () => {
     } 
 
     const deleteNavLinks = (key : string) => {
-        delete navLinksState.value[key]
+        const {[key]: _, ...rest} = navLinksState.value
+        navLinksState.value = rest
     }
 
     return {

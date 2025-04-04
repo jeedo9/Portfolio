@@ -11,7 +11,7 @@ export default () => {
     onMounted(() => {
 
         const handleResize = () => {
-            let windowWidth = window.innerWidth
+            windowWidth = window.innerWidth
     
             if (windowWidth <= md) isMobile.value = true
             else isMobile.value = false

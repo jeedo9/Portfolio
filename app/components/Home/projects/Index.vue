@@ -12,7 +12,7 @@ type ProjectsProps = SectionProjects & SectionsProps
  const {observe} = defineProps<ProjectsProps>()
 
 
-  observe &&  useObserver((entries, observer) => {
+  if (observe) useObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
 
@@ -32,6 +32,6 @@ threshold: .4
           <h2 >{{ title }}</h2>
           <h3 class="sub-title">{{ subtitle }}</h3>
         </div>
-        <Card  :class="['card', {'opacity-0' : observe}]" v-for="(project, i) in projects" :key="project.title" :reverse="i % 2 === 0" v-bind="project" />
+        <Card  v-for="(project, i) in projects" :key="project.title" :class="['card', {'opacity-0' : observe}]" :reverse="i % 2 === 0" v-bind="project" />
       </section>
 </template>

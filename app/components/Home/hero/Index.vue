@@ -2,7 +2,7 @@
 import { navLinks } from '~/components/header/dataHeader';
 import type { SectionHero } from './dataHero';
 import { twMerge } from 'tailwind-merge';
-import { type InjectIsMobile } from '~/app.vue';
+import type { InjectIsMobile } from '~/app.vue';
 import { IS_MOBILE_KEY } from '#imports';
 
  

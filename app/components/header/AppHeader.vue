@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { twMerge } from 'tailwind-merge';
-import type { TNavLink } from '~/types';
-import type { Animation } from '~/types';
+import type { Animation , TNavLink} from '~/types';
 import NavLinks from '../list/NavLinks.vue';
 import throttle from 'lodash.throttle';
-import { type InjectIsMobile } from '~/app.vue';
+import type { InjectIsMobile } from '~/app.vue';
 import { IS_MOBILE_KEY } from '#imports';
 
 export interface AppHeaderProps {
