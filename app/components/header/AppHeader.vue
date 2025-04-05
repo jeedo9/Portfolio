@@ -7,10 +7,11 @@ import type { InjectIsMobile } from '~/app.vue';
 import { IS_MOBILE_KEY } from '#imports';
 
 export interface AppHeaderProps {
-  navLinks: TNavLink[],
+    navLinks: TNavLink[],
     navLinksMenu: TNavLink[],
     resumeThemeBtnAnimation?: string,
     resumeThemeBtnAnimationMenu?: string,
+    animationHamburger?: Animation,
     logoName?: string,
     logoDelay?: string,
     logoAnimation?: Animation,
@@ -21,14 +22,18 @@ export interface AppHeaderProps {
 
 type Tuple2String = [string, string]
 
+type Tuple3String = [string, string, string]
 
- const {navLinksMenu, navLinks, animateShadow} =  defineProps<AppHeaderProps>()
+
+ const {navLinksMenu, navLinks, animateShadow, animationHamburger} =  defineProps<AppHeaderProps>()
 
 
  
- const delayNavLinks = Array.of(getAnimationDelay(navLinks.length + 1 ), getAnimationDelay(navLinks.length + 2)) as Tuple2String
+ const delayBtns = Array.of(getAnimationDelay(navLinks.length + 1 ), getAnimationDelay(navLinks.length + 2)) as Tuple2String
 
- const delayNavLinksMenu = Array.of(getAnimationDelay(navLinksMenu.length + 1), getAnimationDelay( navLinksMenu.length + 2)) as Tuple2String;
+ const delayBtnsMenu = Array.of(getAnimationDelay(navLinksMenu.length + 1), getAnimationDelay( navLinksMenu.length + 2)) as Tuple2String;
+
+ const delayBars = [getAnimationDelay(1), getAnimationDelay(2), getAnimationDelay(3)] as Tuple3String
 
  const showShadow = ref(false);
 
@@ -73,14 +78,14 @@ cleanUp(() => window.removeEventListener('scroll', handleShadowThrottled))
       <div  v-if="!isMobile" class="justify-center items-center gap-x-16 flex">
       
         <NavLinks nav-links-key="navLinks" handle-pressed-nav-link-attr :nav-links />
-        <HeaderResumeAndThemeButtons :delay="delayNavLinks" :animation="resumeThemeBtnAnimation || 'animate-slide-down-left opacity-0'" />
+        <HeaderResumeAndThemeButtons :delay="delayBtns" :animation="resumeThemeBtnAnimation || 'animate-slide-down-left opacity-0'" />
       </div>
-      <UiButtonsHamburger :open="showMenu" @click="toggleMenu" />
+      <UiButtonsHamburger v-if="isMobile"  :delay-bars="delayBars" :animation-bars="animationHamburger || 'animate-slide-down-left'" :open="showMenu" @click="toggleMenu" />
 
       </div>
 
       
-      <HeaderMenu v-if="showMenu" :nav-link-click="closeMenu" :is-open="showMenu" :delay="delayNavLinksMenu"   :animation="resumeThemeBtnAnimationMenu || 'animate-slide-down opacity-0'" :nav-links="navLinksMenu"  />
+      <HeaderMenu v-if="showMenu" :nav-link-click="closeMenu" :is-open="showMenu" :delay="delayBtnsMenu"   :animation="resumeThemeBtnAnimationMenu || 'animate-slide-down opacity-0'" :nav-links="navLinksMenu"  />
 
 
 

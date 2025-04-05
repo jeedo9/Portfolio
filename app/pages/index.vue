@@ -8,6 +8,7 @@ import { sectionContact } from '~/components/Home/contact/dataContact';
 import useObserver from '~/composables/useObserver';
 import useNavLinksOnScroll from '~/composables/useNavLinksOnScroll';
 import { navLinks } from '~/components/header/dataHeader';
+import type { InjectIsMobile } from '~/app.vue';
 
 
 definePageMeta({
@@ -44,12 +45,19 @@ threshold: .3
 useNavLinksOnScroll(navLinks, true, true)
 
 
+const isMobile = inject<InjectIsMobile>(IS_MOBILE_KEY)
+
+const delaySubtitle = isMobile?.value ? getAnimationDelay(4) : getAnimationDelay(navLinks.length + 3)
+
+const delayTitle = isMobile?.value ? getAnimationDelay(5) : getAnimationDelay(navLinks.length + 4)
+
+
 </script>
 
 <template>
    
     <main class="container">
-      <HomeHero v-bind="sectionHero" />
+      <HomeHero :delay-btn-mobile="getAnimationDelay(6)" :delay-title :delay-subtitle v-bind="sectionHero" />
       <HomeAbout observe v-bind="sectionAbout" />
       <HomeSkills observe  v-bind="sectionSkills" />
       <HomeProjects observe  v-bind="sectionProjects" />
