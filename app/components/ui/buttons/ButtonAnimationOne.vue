@@ -7,8 +7,6 @@ type ButtonAnimationOneProps = BtnProps
 
 const props = defineProps<ButtonAnimationOneProps>()
 
-const {showRipple,...rest} = props
-
 const btn = useTemplateRef('btn')
 
 
@@ -19,7 +17,7 @@ const mouseEnter = () => btn.value?.refBtn?.classList.add('animate') || btn.valu
 
 <template>
 
-        <UiButtonsButton ref="btn" :class="twMerge(`before:absolute before:border-accent before:rounded-[inherit] before:inset-0`, $attrs.class as string)" v-bind="rest" @mouseenter.prevent="mouseEnter" @animationend="animationEnd" >
+        <UiButtonsButton ref="btn" :class="twMerge(`before:absolute before:border-accent before:rounded-[inherit] before:inset-0`, $attrs.class as string)" v-bind="props" @mouseenter="mouseEnter" @animationend="animationEnd" >
             <slot />
         </UiButtonsButton>
 

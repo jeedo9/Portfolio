@@ -9,7 +9,7 @@ type ButtonAnimationTwoProps = BtnProps & {
 }
 const props = defineProps<ButtonAnimationTwoProps>()
 
-const {showRipple,...rest} = props
+const {classNameAfter,...rest} = props
 
 </script>
 <template>

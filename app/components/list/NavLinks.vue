@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { twMerge } from 'tailwind-merge';
 import type { TNavLink } from '~/types';
-import NavLink from '../ui/NavLink.vue';
 import useNavLinksStore from '~/stores/navLinks';
 
 export interface NavLinksProps {
@@ -47,7 +46,7 @@ onUnmounted(() => {
             <li v-for="navLink in (handlePressedNavLinkAttr ? navLinksStore.navLinksState[navLinksKey] : navLinks)" :key="navLink.to" class="flex">
 
 
-              <NavLink :aria-current="navLink.isPressed" v-bind="navLink"  @click="handleClick(navLink.to)"  />
+              <UiNavLink :aria-current="navLink.isPressed" v-bind="navLink"  @click="handleClick(navLink.to)"  />
             </li>
             
           </ul>

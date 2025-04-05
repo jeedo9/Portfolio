@@ -53,7 +53,7 @@ onMounted(() => {
             <div class="flex justify-center items-center gap-x-2">
               <UiButtonsButtionIcon show-ripple :to="view.githubLink" class="*:hover:scale-107" tag="link" icon-name="mynaui:brand-github" icon-slug="github" />
 
-            <UiButtonsButtionIcon show-ripple :to="view.liveLink" :class="['*:hover:scale-107', {'disabled': !view.isLive()}]" tag="link" icon-name="mynaui:external-link" icon-slug="external link" />
+            <UiButtonsButtionIcon show-ripple :to="view.liveLink" :aria-disabled="!view.isLive()" :class="['*:hover:scale-107', {'disabled': !view.isLive()}]" tag="link" icon-name="mynaui:external-link" icon-slug="external link" />
              
 
             </div>

@@ -21,7 +21,7 @@ defineProps<AppFooterProps>()
         <UiLogosLogoTwo :name="logoName" :class="twMerge('text-xl sm:text-2xl sm:tracking-normal tracking-[.6rem]', logoClassName)" />
       <div >
        <ul class="flex justify-center items-center gap-x-3">
-        <li v-for="link in links" :key="link.to" :class="( typeof link.className === 'function' ?  link.className(): link.className) ?? ''"><NuxtLink :to="link.to" :target="link.target">{{ link.text ?? link.text  }} <Icon v-if="link.icon" aria-hidden="false" :aria-label="link.icon.slug" :name="link.icon.name" /></NuxtLink></li>
+        <li v-for="link in links" :key="link.to" :class="( typeof link.className === 'function' ?  link.className(): link.className) ?? ''"><NuxtLink :to="link.to" :target="link.target">{{ link.text ?? ''  }} <Icon v-if="link.icon" aria-hidden="false" :aria-label="link.icon.slug" :name="link.icon.name" /></NuxtLink></li>
        </ul>
       </div>
 

@@ -2,7 +2,6 @@ import type { TNavLink } from "~/types"
 import useNavLinksStore from "~/stores/navLinks"
 import throttle from 'lodash.throttle'
 import type { InjectIsMobile } from "~/app.vue"
-import { IS_MOBILE_KEY } from "#imports"
 
 
 type Section = {offsetTop: number, offsetBottom: number, id: string}
