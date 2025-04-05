@@ -3,7 +3,7 @@ import type { TNavLink } from "~/types"
 
 export const navLinksMenu: TNavLink[] = [
     {
-        to: '#about',
+        to: '/#about',
         text: 'About',
         animation: 'animate-slide-down-right',
         delay: getAnimationDelay(1),
@@ -11,7 +11,7 @@ export const navLinksMenu: TNavLink[] = [
         
       },
       {
-        to: '#skills',
+        to: '/#skills',
         text: 'Skills',
         animation: 'animate-slide-down-right',
         delay: getAnimationDelay(2),
@@ -19,7 +19,7 @@ export const navLinksMenu: TNavLink[] = [
   
       },
       {
-        to: '#projects',
+        to: '/#projects',
         text: 'Projects',
         animation: 'animate-slide-down-right',
         delay: getAnimationDelay(3),
@@ -27,7 +27,7 @@ export const navLinksMenu: TNavLink[] = [
   
       },
       {
-        to: '#contact',
+        to: '/#contact',
         text: 'Contact',
         animation: 'animate-slide-down-right',
         delay: getAnimationDelay(4),
