@@ -61,6 +61,6 @@ onMounted(() => {
             </div>
       
           </div>
-          <NuxtImg  :src="view.image.src" class="w-2/5 grayscale-100 hover:grayscale-0 transition-all  md:inline-block hidden" :alt="view.image.name" />
+          <NuxtImg  :src="view.image.src" class="w-[45%] lg:w-2/5 grayscale-100 hover:grayscale-0 transition-all  md:inline-block hidden" :alt="view.image.name" />
     </div>
 </template>
