@@ -70,22 +70,16 @@ cleanUp(() => window.removeEventListener('scroll', handleShadowThrottled))
 </script>
 <template>
         <header :class="twMerge(`flex justify-center items-center h-(--header-height) z-50 sticky top-0 backdrop-blur-md transition-shadow duration-(--duration-large) ${showShadow ? 'shadow-lg' : ''}`, $attrs.class as string)">
-       
       <div class="lg:max-w-6xl transition-[max-width] duration-(--duration-large) max-w-4xl px-7 w-full flex justify-between items-center h-4/5">
         <UiLogosLogoMain :name="logoName" :delay="logoDelay" :animation="logoAnimation" :class="logoClassName"  />
       <div  v-if="!isMobile" class="justify-center items-center gap-x-16 flex">
-      
         <ListNavLinks nav-links-key="navLinks" handle-pressed-nav-link-attr :nav-links />
         <HeaderResumeAndThemeButtons :delay="delayBtns" :animation="resumeThemeBtnAnimation || 'animate-slide-down-left opacity-0'" />
       </div>
       <UiButtonsHamburger v-if="isMobile" :delay-bars="delayBars" :animation-bars="animationHamburger || 'animate-slide-down-left'" :open="showMenu" @click="toggleMenu" />
-
       </div>
-
-      
-      <HeaderMenu v-if="showMenu" :nav-link-click="closeMenu" :is-open="showMenu" :delay="delayBtnsMenu"   :animation="resumeThemeBtnAnimationMenu || 'animate-slide-down opacity-0'" :nav-links="navLinksMenu"  />
-
-
-
+      <Transition leave-active-class="animate-pop-reverse" type="animation">
+        <HeaderMenu v-if="showMenu" :nav-link-click="closeMenu" :is-open="showMenu" :delay="delayBtnsMenu"   :animation="resumeThemeBtnAnimationMenu || 'animate-slide-down opacity-0'" :nav-links="navLinksMenu"  />
+      </Transition>
     </header>
 </template>
