@@ -15,7 +15,7 @@ defineProps<ResumeAndThemeButtonsProps>()
 <template>
       <div :class="twMerge('justify-center items-center gap-x-5 flex', $attrs.class as string)">
 
-          <UiButtonsButton show-ripple  :style="{animationDelay: delay[0]}" :class="animation">Resume</UiButtonsButton>
+          <UiButtonsButton tag="link" to="/resume.pdf" target="_blank" show-ripple  :style="{animationDelay: delay[0]}" :class="animation">Resume</UiButtonsButton>
           <UiButtonsThemeToggle :style="{animationDelay: delay[1]}" :class="animation"   />
 
         </div>
