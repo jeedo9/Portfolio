@@ -8,7 +8,8 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxtjs/google-fonts',
     '@nuxtjs/color-mode',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    'nuxt-gtag'
   ],
   image: {
     quality: 90
@@ -20,6 +21,10 @@ export default defineNuxtConfig({
       productionBaseUrl : PRODUCTION_URL,
       developmentBaseUrl : DEVELOPMENT_URL
     }
+  },
+  gtag: {
+    enabled: process.env.NODE_ENV === 'production',
+    id: process.env.VITE_GA_ID || 'G-RN8KKZ10Q1'
   },
   vite: {
     plugins: [
