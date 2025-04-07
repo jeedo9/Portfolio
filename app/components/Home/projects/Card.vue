@@ -17,12 +17,11 @@ onMounted(() => {
 
   const handleResize = () => {
     const windowWidth = window.innerWidth
-    const md = 768;
-    const lg = 1024;
-    if (windowWidth >= md && windowWidth <= lg) maxStack.value = 3
-    else if (windowWidth > lg) maxStack.value = 4
-    else if (windowWidth < md) maxStack.value = stack.length
+    if (windowWidth >= MD && windowWidth <= LG) maxStack.value = 3
+    else if (windowWidth > LG) maxStack.value = 4
+    else if (windowWidth < MD) maxStack.value = stack.length
   }
+  handleResize()
 
   const handleResizeThrottled = throttle(handleResize, 500)
   window.addEventListener('resize', handleResizeThrottled)

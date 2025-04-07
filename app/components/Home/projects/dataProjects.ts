@@ -42,7 +42,7 @@ const sectionProjects : SectionProjects = {
                     src: `${WEBSITE_URL}/images/vueMovie.png`,
                     name: 'vueMovie application'
                 },
-                githubLink: '',
+                githubLink: 'https://github.com/jeedo9/vueMovie',
                
                 isLive() {
                     return !!this.liveLink
@@ -65,7 +65,7 @@ const sectionProjects : SectionProjects = {
                     src: `${WEBSITE_URL}/images/AlimConfiance.png`,
                     name: 'AlimConfiance application'
                 },
-                githubLink: '',
+                githubLink: 'https://github.com/jeedo9/AlimConfiance',
                 isLive() {
                     return !!this.liveLink
 

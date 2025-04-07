@@ -21,5 +21,5 @@ const handleClick = (e: MouseEvent) => {
 </script>
 
 <template>
-          <UiButtonsButtionIcon :icon-slug="modeValue + ' mode'" :icon-name="modeValue === 'dark' ? 'mynaui:sun' : 'mynaui:moon-star-solid'" v-bind="rest" @click="handleClick" />
+          <UiButtonsButtionIcon :icon-slug="(modeValue === 'light' ? 'dark' : 'light') + ' mode'" :icon-name="modeValue === 'dark' ? 'mynaui:sun' : 'mynaui:moon-star-solid'" v-bind="rest" @click="handleClick" />
 </template>
