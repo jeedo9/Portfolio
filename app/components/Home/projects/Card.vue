@@ -6,10 +6,10 @@ import type { Project } from './dataProjects';
 type CardProps = Project & {
     reverse?: boolean
 }
-defineProps<CardProps>()
+const {stack} = defineProps<CardProps>()
 
 
-const maxStack = ref<3 | 4>(4)
+const maxStack = ref<number>(4)
 
 
 
@@ -20,7 +20,8 @@ onMounted(() => {
     const md = 768;
     const lg = 1024;
     if (windowWidth >= md && windowWidth <= lg) maxStack.value = 3
-    else if (windowWidth > lg || windowWidth < md) maxStack.value = 4
+    else if (windowWidth > lg) maxStack.value = 4
+    else if (windowWidth < md) maxStack.value = stack.length
   }
 
   const handleResizeThrottled = throttle(handleResize, 500)
@@ -39,7 +40,7 @@ onMounted(() => {
 
             <div class="flex flex-col justify-center items-start md:items-end w-full pl-2 md:pr-2 gap-y-4.5 md:gap-y-6">
               <div class="flex justify-start md:justify-end items-center w-full gap-x-3">
-              <ul role="note" aria-roledescription="technologies used for this project" class="flex justify-center items-center gap-x-2 md:text-base sm:text-sm text-xs">
+              <ul role="note" aria-roledescription="technologies used for this project" class="flex justify-start md:gap-y-0 gap-3 max-w-max md:max-w-max sm:max-w-4/5 md:justify-center md:flex-nowrap flex-wrap items-center md:gap-x-2 md:text-base sm:text-sm text-xs">
                 <UiBadgesBadge v-for="item in stack.slice(0, maxStack)" :key="item" >{{item}}</UiBadgesBadge>
       
               </ul>

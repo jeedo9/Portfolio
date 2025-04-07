@@ -26,7 +26,7 @@ threshold: .2
 </script>
 
 <template>
-       <section id="about" :class="twMerge('flex justify-center flex-col items-center gap-y-10', $attrs.class as string)">
+       <section id="about" :class="twMerge('flex justify-center sm:my-0 my-20 flex-col items-center gap-y-10', $attrs.class as string)">
         <div class="flex justify-center items-center gap-4 flex-col">
           <h2 id="about-me" aria-describedby="me">{{ title }}</h2>
           <h3 id="who-i-am" aria-describedby="me" class="sub-title">{{ subtitle }}</h3>

@@ -12,15 +12,17 @@ import type {HeadingTags} from '../../../types'
     const { as = 'h4', name = AUTHOR_NAME} = defineProps<LogoTwoProps>()
 
 
+    const Comp = as
+
 </script>
 <template>
     
     <NuxtLink href="#">
 
-        <as role="button" :class="twMerge('logo', $attrs.class as string)">
+        <Comp role="button" :class="twMerge('logo', $attrs.class as string)">
     
             {{ name }}
-        </as>
+        </Comp>
 
         </NuxtLink>
   

@@ -22,7 +22,7 @@ provide(IS_MOBILE_KEY, isMobile)
 
 <template>
 
-  <Torch v-if="mode.value === 'dark'" />
+  <Torch v-if="mode.value === 'dark' && !isMobile" />
   <NuxtLayout>
     <NuxtPage />
 
