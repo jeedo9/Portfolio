@@ -1,5 +1,5 @@
 import tailwindcss from "@tailwindcss/vite";
-import { AUTHOR_LASTNAME, WEBSITE_DESCRIPTION , WEBSITE_NAME, AUTHOR_NAME} from "./app/utils/constants";
+import { AUTHOR_LASTNAME, WEBSITE_DESCRIPTION , WEBSITE_NAME, AUTHOR_NAME, WEBSITE_URL, PRODUCTION_URL, DEVELOPMENT_URL} from "./app/utils/constants";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
@@ -14,6 +14,13 @@ export default defineNuxtConfig({
     quality: 90
   },
   // @ts-expect-error (unknown ts warning)
+  runtimeConfig: {
+    public : {
+      websiteBaseUrl : WEBSITE_URL,
+      productionBaseUrl : PRODUCTION_URL,
+      developmentBaseUrl : DEVELOPMENT_URL
+    }
+  },
   vite: {
     plugins: [
       tailwindcss(),
@@ -26,18 +33,18 @@ export default defineNuxtConfig({
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: WEBSITE_NAME },
       { property: 'og:description', content: WEBSITE_DESCRIPTION },
-      { property: 'og:url', content: '' },
+      { property: 'og:url', content: WEBSITE_URL },
 
       // Twitter
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:description', content: WEBSITE_DESCRIPTION },
       { name: 'twitter:creator', content: AUTHOR_NAME + ' ' + AUTHOR_LASTNAME },
       { name: 'twitter:site', content: WEBSITE_NAME },
-      { name: 'twitter:url', content: '' },
+      { name: 'twitter:url', content: WEBSITE_URL },
       ],
       link: [
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },  
-        { rel: 'canonical', href: '' },     
+        { rel: 'canonical', href: WEBSITE_URL },     
       ]
     },
 
@@ -45,12 +52,11 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4
   },
-  scan: true,
   css: ['@/assets/css/main.css'],
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false },
   ssr: false,
-  // routeRules: {
+  // routeRules: {  (SSG)
   //   '/**': {prerender: true}
   // }
   googleFonts: {

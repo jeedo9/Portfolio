@@ -1,6 +1,5 @@
 import type { Section } from "../index.types"
 
-
 type Project = {
     title: string,
     description: string,
@@ -40,7 +39,7 @@ const sectionProjects : SectionProjects = {
             ],
             view: {
                 image: {
-                    src: 'http://localhost:3000/images/vueMovie.png',
+                    src: `${WEBSITE_URL}/images/vueMovie.png`,
                     name: 'vueMovie application'
                 },
                 githubLink: '',
@@ -63,7 +62,7 @@ const sectionProjects : SectionProjects = {
             ],
             view: {
                 image: {
-                    src: 'http://localhost:3000/images/AlimConfiance.png',
+                    src: `${WEBSITE_URL}/images/AlimConfiance.png`,
                     name: 'AlimConfiance application'
                 },
                 githubLink: '',

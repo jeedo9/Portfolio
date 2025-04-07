@@ -18,6 +18,6 @@ document.addEventListener('mousemove', handleMouseMove)
 </script>
 
 <template>
-      <span aria-hidden ref="torch" style="top: 5%; left: 90%;" :class="twMerge('bg-radial from-blue-700/20  rounded-full  size-[50%] inline-block fixed -z-[1000] -translate-x-1/2 -translate-y-1/2', $attrs.class as string)"/>
+      <span ref="torch" aria-hidden style="top: 5%; left: 90%;" :class="twMerge('bg-radial from-blue-700/20  rounded-full  size-[50%] inline-block fixed -z-[1000] -translate-x-1/2 -translate-y-1/2', $attrs.class as string)"/>
 
 </template>

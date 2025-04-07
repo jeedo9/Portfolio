@@ -20,5 +20,5 @@ defineExpose({
 </script>
 
 <template>
-        <span  aria-hidden ref="ripple" :class="twMerge('absolute rounded-full opacity-0 -translate-x-1/2 -translate-y-1/2 size-10 bg-white/45 dark:bg-white/23', $attrs.class as string)" @animationend="animationEnd" />
+        <span  ref="ripple" aria-hidden :class="twMerge('absolute rounded-full opacity-0 -translate-x-1/2 -translate-y-1/2 size-10 bg-white/45 dark:bg-white/23', $attrs.class as string)" @animationend="animationEnd" />
 </template>
