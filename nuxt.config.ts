@@ -33,6 +33,9 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      htmlAttrs: {
+        lang: 'en'
+      },
       meta: [
       // Open Graph (Facebook, LinkedIn...)
       { property: 'og:type', content: 'website' },
